@@ -35,3 +35,34 @@ class Storage:
         except (FileNotFoundError, json.JSONDecodeError):
             return []
 
+
+class TodoList:
+    def __init__(self, storage):
+        self.storage = storage
+        self.tasks = self.storage.load()
+
+    def add_task(self, title, description):
+        task = Task(title, description)
+        self.tasks.append(task)
+        self.storage.save(self.tasks)
+        print(f"Task '{title}' added.")
+
+    def list_tasks(self):
+        return self.tasks
+
+    def complete_task(self, index):
+        if 0 <= index < len(self.tasks):
+            self.tasks[index].completed = True
+            self.storage.save(self.tasks)
+            print(f"Task {index + 1} completed.")
+        else:
+            print("Invalid task index.")
+
+    def delete_task(self, index):
+        if 0 <= index < len(self.tasks):
+            removed = self.tasks.pop(index)
+            self.storage.save(self.tasks)
+            print(f"Task '{removed.title}' deleted.")
+        else:
+            print("Invalid task index.")
+
