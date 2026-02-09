@@ -45,7 +45,7 @@ Run the application using `python main.py`.
 ### Add a Task
 
 ```bash
-python main.py add --title "Buy Milk" --desc "2% fat"
+python main.py add --title "STUDY DJANGO" --desc "Study django today for 2 hr "
 ```
 
 ### List Tasks
