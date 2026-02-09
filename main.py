@@ -30,15 +30,13 @@ def main():
 
     elif args.command == "delete":
         if args.index is not None:
-            # Intentional Error: args.index is 1-based from user, but we use it as 0-based
-            todo_list.delete_task(args.index)
+             todo_list.delete_task(args.index - 1)
         else:
             print("Error: --index required for delete.")
 
     elif args.command == "complete":
         if args.index is not None:
-            # Intentional Error: Same here
-            todo_list.complete_task(args.index)
+            todo_list.complete_task(args.index - 1)
         else:
             print("Error: --index required for complete.")
 
