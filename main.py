@@ -28,5 +28,19 @@ def main():
             status = "[x]" if task.completed else "[ ]"
             print(f"{i + 1}. {status} {task.title}")
 
+    elif args.command == "delete":
+        if args.index is not None:
+            # Intentional Error: args.index is 1-based from user, but we use it as 0-based
+            todo_list.delete_task(args.index)
+        else:
+            print("Error: --index required for delete.")
+
+    elif args.command == "complete":
+        if args.index is not None:
+            # Intentional Error: Same here
+            todo_list.complete_task(args.index)
+        else:
+            print("Error: --index required for complete.")
+
 if __name__ == "__main__":
     main()
