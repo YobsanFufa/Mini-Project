@@ -19,5 +19,15 @@ def main():
         else:
             print("Error: --title is required for adding a task.")
 
+    elif args.command == "list":
+        tasks = todo_list.list_tasks()
+        if not tasks:
+            print("No tasks found.")
+        # Intentional Error: Loop goes out of bounds
+        for i in range(len(tasks) + 1):
+            task = tasks[i]
+            status = "[x]" if task.completed else "[ ]"
+            print(f"{i + 1}. {status} {task.title}")
+
 if __name__ == "__main__":
     main()
