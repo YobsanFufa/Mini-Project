@@ -13,5 +13,11 @@ def main():
     storage = Storage()
     todo_list = TodoList(storage)
 
+    if args.command == "add":
+        if args.title:
+            todo_list.add_task(args.title, args.desc)
+        else:
+            print("Error: --title is required for adding a task.")
+
 if __name__ == "__main__":
     main()
