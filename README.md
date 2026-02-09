@@ -96,5 +96,3 @@ When loading data, the `Storage` class reads the JSON file using `json.load()`, 
 def from_dict(cls, data):
     return cls(data["title"], data["description"], data["completed"])
 ```
-
-This ensures that the application always works with strong Python objects while storing data in a portable JSON format.
